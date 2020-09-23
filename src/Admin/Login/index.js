@@ -14,8 +14,23 @@ import {
   Row,
 } from "reactstrap";
 import { Button } from "antd";
+import {toastr} from 'react-redux-toastr'
 import "../../styles/admin.css";
+
 class index extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+
+    }
+  }
+
+  handleSubmit = () => {
+    console.log('submit')
+    toastr.success('login Sucess')
+    this.props.history.push('/cc-admin/dashboard')
+  }
+
   render() {
     return (
       <div className="app flex-row align-items-center bg-clr">
@@ -75,6 +90,7 @@ class index extends Component {
                             type="primary"
                             color="primary"
                             className="px-4"
+                            onClick={this.handleSubmit}
                           >
                             Login
                           </Button>

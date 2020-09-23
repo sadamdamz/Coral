@@ -29,6 +29,7 @@ class index extends Component {
 
   logout = () => {
     console.log('logout')
+    this.props.history.push('/cc-admin/login')
   }
 
   render() {
@@ -72,7 +73,7 @@ class index extends Component {
               minHeight: 280,
             }}
           >
-            {/* <Suspense fallback={<p>Loading...</p>}> */}
+            <Suspense fallback={<p>Loading...</p>}>
             <Switch>
               {routes.map((item, index) => {
                 return (
@@ -84,7 +85,7 @@ class index extends Component {
                 );
               })}
             </Switch>
-            {/* </Suspense> */}
+            </Suspense>
           </Content>
         </Layout>
       </Layout>
