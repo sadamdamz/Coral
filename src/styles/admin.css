@@ -1,0 +1,20 @@
+@import '~antd/dist/antd.css';
+
+* {
+  font-family: "Montserrat";
+}
+#root{
+  height:100vh;
+}
+#root > section{
+  height:100%;
+}
+a {
+  outline: none !important;
+}
+
+.bg-clr{
+  height: 100vh;
+  display: flex;
+  background: #50a4b329;
+}
