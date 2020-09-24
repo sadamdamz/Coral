@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Layout, Menu, } from "antd";
+import { Layout, Menu } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -21,6 +21,19 @@ class index extends Component {
     };
   }
 
+  componentWillMount() {
+    let adminsession =
+      localStorage.getItem("admin_session") != null
+        ? JSON.parse(localStorage.getItem("admin_session"))
+        : null;
+    let admin_session = adminsession;
+    // console.log(this.state.navigation)
+    if (admin_session == null) {
+      this.props.history.push("/cc-admin/login");
+    }
+    this.setState({ data: admin_session });
+  }
+
   toggle = () => {
     this.setState({
       collapsed: !this.state.collapsed,
@@ -28,9 +41,10 @@ class index extends Component {
   };
 
   logout = () => {
-    console.log('logout')
-    this.props.history.push('/cc-admin/login')
-  }
+    console.log("logout");
+    localStorage.removeItem('admin_session')
+    this.props.history.push("/cc-admin/login");
+  };
 
   render() {
     return (
@@ -55,23 +69,26 @@ class index extends Component {
         <Layout className="site-layout">
           <Header
             className="site-layout-background"
-            style={{ padding: 0, background: "white", display:"flex" }}
+            style={{ padding: 0, background: "white", display: "flex" }}
           >
             <>
-            <div>
-            {React.createElement(
-              this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-              {
-                className: "trigger",
-                onClick: this.toggle,
-              }
-            )}
-            </div>
-            <div className="admin-logo">
-              <a href="/cc-admin/dashboard" >
-              <img src={require('../../assets/img/coral/coral-logo.png')} alt="logo"/>
-              </a>
-            </div>
+              <div>
+                {React.createElement(
+                  this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+                  {
+                    className: "trigger",
+                    onClick: this.toggle,
+                  }
+                )}
+              </div>
+              <div className="admin-logo">
+                <a href="/cc-admin/dashboard">
+                  <img
+                    src={require("../../assets/img/coral/coral-logo.png")}
+                    alt="logo"
+                  />
+                </a>
+              </div>
             </>
           </Header>
           <Content
@@ -83,20 +100,22 @@ class index extends Component {
             }}
           >
             <Suspense fallback={<p>Loading...</p>}>
-            <Switch>
-              {routes.map((item, index) => {
-                return (
-                  <Route
-                    path={item.path}
-                    exact={item.exact}
-                    render={(props) => <item.component {...props} />}
-                  />
-                );
-              })}
-            </Switch>
+              <Switch>
+                {routes.map((item, index) => {
+                  return (
+                    <Route
+                      path={item.path}
+                      exact={item.exact}
+                      render={(props) => <item.component {...props} />}
+                    />
+                  );
+                })}
+              </Switch>
             </Suspense>
           </Content>
-          <Footer style={{ textAlign: 'center', background:'White' }}>Coral-Country ©2020</Footer>
+          <Footer style={{ textAlign: "center", background: "White" }}>
+            Coral-Country ©2020
+          </Footer>
         </Layout>
       </Layout>
     );

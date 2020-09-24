@@ -1,8 +1,19 @@
+
 * {
   font-family: "Montserrat";
 }
 a {
   outline: none !important;
+}
+.err-msg{
+  color:red;
+  text-align: center;
+}
+.contacts-map{
+  height:100%;
+}
+#root > div:nth-child(5) > div.slider-header > div.slick-slider.slick-initialized > button.slick-arrow.slick-next{
+  display: none!important;
 }
 .coral-top-logo {
   display: flex;
@@ -268,6 +279,7 @@ bottom: -1rem!important;
   background-size: cover;
   width: 100%;
 }
+
 .coral-video-image::before {
   position: absolute;
   content: "";
@@ -292,6 +304,7 @@ bottom: -1rem!important;
   text-align: center;
   margin: 0 auto;
   z-index: 100;
+  cursor: pointer;
 }
 .video-play img {
   padding: 20px;
@@ -593,9 +606,6 @@ bottom: -1rem!important;
   width: 21.5%;
   height: 5px;
   background-color: #b7bf31;
-}
-.contacts-map iframe {
-  height: 568px;
 }
 .footer-bord {
   width: 100%;
@@ -1182,6 +1192,9 @@ bottom: -1rem!important;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 767px){
+  .contacts-map iframe {
+    height: 568px;
+  }
   .slider-image{
     width:100%;
     height:17rem;

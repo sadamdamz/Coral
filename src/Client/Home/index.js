@@ -6,6 +6,12 @@ import Amenities from "./Amenities";
 import Lead from "./Lead";
 
 class Home extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      
+    }
+  }
   render() {
     return (
       <div style={{position:'relative'}}>
@@ -13,7 +19,7 @@ class Home extends Component {
         <Welcome />
         <Video />
         <Amenities />
-        <Lead />
+        <Lead {...this.props}/>
       </div>
     );
   }

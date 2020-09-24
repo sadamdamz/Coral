@@ -90,7 +90,7 @@ class BannerList extends Component {
       .post(API_URL + "/api/admin/updateslideractiondata", PostData)
       .then(function (response) {
         if (response.data.Statuscode == 200) {
-          toastr.success("User", response.data.Message);
+          toastr.success("Banner", response.data.Message);
           $this.getListData();
         } else {
           toastr.error("Error", response.data.Message);
