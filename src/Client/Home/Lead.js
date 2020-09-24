@@ -7,7 +7,9 @@ class Lead extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fields: {},
+      fields: {
+        user_area:null
+      },
       errors: {},
     };
   }

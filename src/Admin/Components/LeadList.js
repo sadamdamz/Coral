@@ -28,7 +28,7 @@ import {promoterLeadStatus} from "../../constant"
 // import ActionPopup from "./ActionPopup";
 import axios from "axios";
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 class EnquireList extends Component {
   constructor(props) {
@@ -54,21 +54,6 @@ class EnquireList extends Component {
     this.getListData()
   }
 
-  // async handleAction(val,id){
-  //   let postData = {
-  //     action_type:val,
-  //     enquiry_id:id
-  //   }
-  //   try {
-  //     let api = await axios.post(API_URL+'/api/admin/promoter/updateenquiryaction', postData);
-  //     let response = await api.data;
-  //     toastr.success('Lead Updated');
-  //     this.reload();
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
   getListData() {
     let $this = this;
     this.setState({loading:true})
@@ -82,12 +67,12 @@ class EnquireList extends Component {
       { dataField: "enquiry_id", text: "SNO" },
       { dataField: "date", text: "Lead Date" },
       {
-        dataField: "enquiry_name",
+        dataField: "enquiry_first_name",
         text: "First Name",
         filter: textFilter(),
       },
       {
-        dataField: "enquiry_name",
+        dataField: "enquiry_last_name",
         text: "Last Name",
         filter: textFilter(),
       },
@@ -98,15 +83,14 @@ class EnquireList extends Component {
       },
       { dataField: "enquiry_email", text: "Email Id", filter: textFilter() },
       {
-        dataField: "enquiry_name",
+        dataField: "enquiry_comments",
         text: "Message",
       },
       { dataField: "lead_source", text: "Lead Source", filter: textFilter() },
-      { dataField: "action", text: "Action" },
     ];
     this.setState({columns})
     axios
-      .post("https://stage.ezeehousing.com/ezapi/api/admin/promoter/getenquirylist", postData)
+      .get(API_URL+"/api/admin/getcontactusenquirylist")
       .then(function (response) {
         console.log(response.data.Statuscode);
         if (response.data.Statuscode == 200) {
@@ -115,40 +99,15 @@ class EnquireList extends Component {
           let i = 1;
           resData.map((item, index) => {
             let datas = {};
-            let action = [];
-            let leadStatus = [];
             var date = <Moment format="D MMM YYYY">{item.created_date}</Moment>;
-            // action.push(
-            //   <UncontrolledButtonDropdown >
-            //   <DropdownToggle caret color="primary">
-            //     Status
-            //   </DropdownToggle>
-            //   <DropdownMenu>
-            //     {
-            //       promoterLeadStatus.map((items,index)=>{
-            //         return (
-            //         <DropdownItem key={index} onClick={()=>$this.handleAction(items.value,item.enquiry_id)}>{items.label}</DropdownItem>
-            //         )
-            //       })
-            //     }
-            //   </DropdownMenu>
-            // </UncontrolledButtonDropdown>
-            // )
-            promoterLeadStatus.filter((items,index)=>{
-              if(items.value===item.lead_status){
-                leadStatus.push(items.label)
-              }
-            })
-            if(leadStatus.length===0){
-              leadStatus.push("Pending")
-            }
             datas["enquiry_id"] = index + 1;
-            datas["enquiry_name"] = item.enquiry_name;
+            datas["enquiry_first_name"] = item.enquiry_first_name;
+            datas['enquiry_last_name'] = item.enquiry_last_name
             datas["enquiry_mobileno"] = item.enquiry_mobileno;
             datas["enquiry_email"] = item.enquiry_email;
+            datas['enquiry_comments'] = item.enquiry_comments;
             datas["date"] = date;
-            datas['lead_source'] = item.lead_source;
-            datas["action"] = action;
+            datas['lead_source'] = item.source;
             i++;
             TableData.push(datas);
           });
