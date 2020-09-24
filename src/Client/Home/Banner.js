@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import Left from "../../assets/icons/Left.svg";
-import Right from "../../assets/icons/Right.svg";
+
+const Img_Url = process.env.REACT_APP_API_URL+"/uploads/slider/large/";
 
 class Banner extends Component {
   constructor(props){
@@ -33,12 +33,21 @@ class Banner extends Component {
           <img src={require('../../assets/icons/Right.svg')} className="rightIcon" onClick={this.next}/>
         </div>
         <Slider ref={c => (this.slider = c)} {...settings}>
-          <div>
+          {
+            this.props.data.map((item, index) => {
+              return (
+                <div key={index}>
+                  <img src={Img_Url+item.slider_image_large} alt={index} className="slider-image"/>
+                </div>
+              )
+            })
+          }
+          {/* <div>
             <h3><img src={require("../../assets/img/coral/Banner.jpg")} className="slider-image" /></h3>
           </div>
           <div>
           <img src={"https://ezeehousing.com/ezapi/uploads/promoter/microsite/large/c367e2ee-814a-400f-b4ae-bcad18bc82f2-1600755249783.jpeg"} className="slider-image" />
-          </div>
+          </div> */}
         </Slider>
       </div>
     );

@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 
 class Welcome extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+
+    }
+  }
+
+  projectDetails = () => {
+    this.props.history.push('/project-details')
+  }
+
+  contactus = () => {
+    this.props.history.push('/contact')
+  }
+
   render() {
     return (
       <div>
@@ -9,7 +24,7 @@ class Welcome extends Component {
             <div class="county-img">
               <img src={require("../../assets/img/coral/coral-logo.png")} width="100%" height="100%" />
             </div>
-            <h1>welcom to coral county</h1>
+            <h1>welcome to coral county</h1>
             <p>
               One of the fastest-growing entities in the realty sector with a
               difference that offers luxury at resonable costs,excellent
@@ -17,13 +32,13 @@ class Welcome extends Component {
               possible standards.we take pride in upholding the highest ethical
               standards by
             </p>
-            <h4>maintaining transparency in all our transactions.</h4>
+            <h4>Maintaining Transparency in all our Transactions.</h4>
             <div class="coral-btn">
-              <button type="button" class="coral-btn1">
+              <button type="button" class="coral-btn1" onClick={this.projectDetails}>
                 {" "}
                 Read more<i class="fa fa-arrow-circle-right coral-right"></i>
               </button>
-              <button type="button" class="coral-btn2">
+              <button type="button" class="coral-btn2" onClick={this.contactus}>
                 Contact Us<i class="fa fa-arrow-circle-right coral-right"></i>
               </button>
             </div>
@@ -50,7 +65,7 @@ class Welcome extends Component {
                   atmospher
                 </p>
               </div>
-              <button type="button" class="coral-btn1">
+              <button type="button" class="coral-btn1" onClick={this.projectDetails}>
                 {" "}
                 Read more<i class="fa fa-arrow-circle-right coral-right"></i>
               </button>

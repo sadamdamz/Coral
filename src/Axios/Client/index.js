@@ -14,7 +14,7 @@ export const InsertLead = async (PostData) => {
 
 export const getAllSlider = async () => {
   try {
-    let api = await axios.get(API_URL+"");
+    let api = await axios.get(API_URL+"/api/v1/getsliderlist");
     let response = await api.data;
     return response;
   } catch (error) {

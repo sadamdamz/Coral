@@ -9,6 +9,66 @@ a {
   color:red;
   text-align: center;
 }
+.pd-8{
+  padding-bottom: 8rem;
+}
+.pd-4{
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+.section-bg{
+  background:#f1f1f1;
+}
+.ms-heading ul {
+	margin-bottom: 35px;
+}
+.ms-heading ul li {
+	position: relative;
+	padding: 0px 25px;
+}
+.ms-heading ul li::after {
+	position: absolute;
+	content: "|";
+	font-size: 20px;
+	font-family: "Muli";
+	color: #2f2f2f;
+	top: 0px;
+	right: -2px;
+}
+.ms-heading ul li:last-child::after {
+	display: none;
+}
+.ms-heading ul li a {
+	font-size: 20px;
+	font-family: "Muli";
+	color: #2f2f2f;
+	text-decoration: none;
+	text-transform: capitalize;
+}
+/* .ms-inner-heading h3 {
+	font-size: 35px;
+	font-family: "Muli";
+	font-weight: 700;
+	color: #2f2f2f;
+	line-height: normal;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+.ms-inner-heading h4 {
+	font-size: 25px;
+	font-family: "Muli";
+	font-weight: 700;
+	color: #2f2f2f;
+	line-height: normal;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+} */
+.custom-loader{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .contacts-map{
   height:100%;
 }
@@ -207,7 +267,7 @@ bottom: -1rem!important;
 }
 .coral-county p {
   line-height: 2;
-  text-align: justify;
+  text-align: center;
   margin-top: 10px;
 }
 .coral-county h4 {
@@ -838,9 +898,11 @@ bottom: -1rem!important;
   }
   .coral-county p {
     line-height: normal;
-    font-size: 17px;
+    font-size: 13px;
+    padding: 1rem;
     width: 90%;
     margin: 0 auto;
+    ;
   }
   .coral-btn1,
   .coral-btn2 {
