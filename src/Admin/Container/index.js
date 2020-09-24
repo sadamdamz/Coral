@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -11,7 +11,7 @@ import {
 } from "@ant-design/icons";
 import routes from "../../adminRoutes";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 class index extends Component {
   constructor(props) {
@@ -55,8 +55,10 @@ class index extends Component {
         <Layout className="site-layout">
           <Header
             className="site-layout-background"
-            style={{ padding: 0, background: "white" }}
+            style={{ padding: 0, background: "white", display:"flex" }}
           >
+            <>
+            <div>
             {React.createElement(
               this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
               {
@@ -64,6 +66,13 @@ class index extends Component {
                 onClick: this.toggle,
               }
             )}
+            </div>
+            <div className="admin-logo">
+              <a href="/cc-admin/dashboard" >
+              <img src={require('../../assets/img/coral/coral-logo.png')} alt="logo"/>
+              </a>
+            </div>
+            </>
           </Header>
           <Content
             className="site-layout-background"
@@ -87,6 +96,7 @@ class index extends Component {
             </Switch>
             </Suspense>
           </Content>
+          <Footer style={{ textAlign: 'center', background:'White' }}>Coral-Country ©2020</Footer>
         </Layout>
       </Layout>
     );

@@ -9,19 +9,20 @@ import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { toastr } from "react-redux-toastr";
 import { confirmAlert } from "react-confirm-alert";
+import Moment from "react-moment";
 import filterFactory, {
   textFilter,
   selectFilter,
 } from "react-bootstrap-table2-filter";
 import axios from "axios";
-const API_URL = "https://stage.ezeehousing.com/ezapi";
+const API_URL = process.env.REACT_APP_API_URL;
 
 class BannerList extends Component {
   constructor(props){
     super(props);
     let columns = [
-      { dataField: "slider_title", text: "SNO"  },
-      { dataField: "action", text: "Created Date" },
+      { dataField: "sno", text: "SNO"  },
+      { dataField: "created_date", text: "Created Date" },
       { dataField: "image", text: "Image",  },
       { dataField: "active", text: "Enable/Disable" }
     ];
@@ -86,7 +87,7 @@ class BannerList extends Component {
     const PostData = { slider_id: slider_id, action_type: action_type };
     // const { history } = this.props;
     axios
-      .post(API_URL + "/api/admin/promoter/updateslideractiondata", PostData)
+      .post(API_URL + "/api/admin/updateslideractiondata", PostData)
       .then(function (response) {
         if (response.data.Statuscode == 200) {
           toastr.success("User", response.data.Message);
@@ -108,26 +109,26 @@ class BannerList extends Component {
     const { promoterId } = this.props;
     let postData = {promoter_id:promoterId};
     axios
-    .post(API_URL + "/api/admin/promoter/getallsliderlist",postData)
+    .get(API_URL + "/api/admin/getallsliderlist")
     .then(function (response) {
       console.log(response.data.Statuscode);
       if (response.data.Statuscode == 200) {
         let resData = response.data.Data;
         let TableData = [];
         let i = 1;
-        resData.map((item) => {
+        resData.map((item, index) => {
           let datas = {};
           var Action = [];
           var Active = [];
-          Action.push(
-            <Link
-              to={`/ez-admin/promoters/slideslist/edit-slides/${item.slider_id}`}
-            >
-              <a className="option-btns" href="">
-                <i className="fa fa-edit"></i>
-              </a>
-            </Link>
-          );
+          // Action.push(
+          //   <Link
+          //     to={`/ez-admin/promoters/slideslist/edit-slides/${item.slider_id}`}
+          //   >
+          //     <a className="option-btns" href="">
+          //       <i className="fa fa-edit"></i>
+          //     </a>
+          //   </Link>
+          // );
           if (item.slider_status == 1) {
             Active.push(
               <a
@@ -147,7 +148,9 @@ class BannerList extends Component {
               </a>
             );
           }
-          let image = <img src={API_URL+`/uploads/promoter/slider/thumb/${item.slider_image_thumb}`} alt={item.slider_title} style={{height:'5rem'}} />
+          let image = <img src={API_URL+`/uploads/slider/thumb/${item.slider_image_thumb}`} alt={item.slider_title} style={{height:'5rem'}} />
+          datas['sno'] = index + 1;
+        datas['created_date'] = <Moment format="D MMM YYYY">{item.created_date}</Moment>
           datas["slider_title"] = item.slider_title;
           datas["project_name"] = item.project_name;
           datas["image"] = image;

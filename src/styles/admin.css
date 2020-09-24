@@ -27,3 +27,79 @@ a {
   position: absolute;
   bottom: 0;
 }
+
+.admin-logo{
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.upload-icon{
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.upload-icon > img{
+  width: 9rem;
+  height: 6rem;
+  border: 2px solid #8f8fff;
+  padding: 20px;
+  border-style: dashed;
+  background: #9191ff47;
+}
+
+.upload-btn{
+  width: fit-content;
+  margin: auto;
+  padding: 1rem;
+}
+
+.err-msg{
+  color:red;
+  text-align: center;
+}
+
+.custom-ui-confirm-alert {
+  text-align: center;
+  width: 500px;
+  padding: 50px 45px;
+  background: #645cd0ba;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+.custom-ui-confirm-alert > button {
+  width: 160px;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin: 10px;
+  cursor: pointer;
+  background: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+a.option-btns i {
+  height: 22px;
+  width: 22px;
+  color: #20a8d8;
+  text-align: center;
+  border: 1px solid #20a8d8;
+  border-radius: 3px;
+  padding: 3px 0px;
+  margin-right: 1px;
+  font-size: 14px;
+  cursor: pointer;
+}
+a.option-btns  i:hover {
+color: #fff;
+background-color: #20a8d8;
+}
+
+.login-header{
+  display: grid;
+  grid-template-columns: auto 10rem;
+}
+.login-header > img{
+  width: 4rem;
+}
