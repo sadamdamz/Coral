@@ -12,6 +12,16 @@ a {
 .pd-8{
   padding-bottom: 8rem;
 }
+.contact-h1{
+  text-align: center;
+    padding: 2rem;
+    color: #2e7890;
+}
+.contact-p{
+  text-align: center;
+    font-size: 22px;
+    font-weight: initial;
+}
 .pd-4{
   padding-bottom: 4rem;
   padding-top: 4rem;
@@ -522,11 +532,11 @@ bottom: -1rem!important;
   top: 9px;
 }
 .c-logo {
-  width: 20%;
+  width: 50%;
   object-fit: cover;
 }
 .c-logo img {
-  margin-top: 10px;
+  margin-top: 2rem;
 }
 .quicks-inner-map::before {
   background-image: url("../assets/img/coral/Location.png");
@@ -686,24 +696,30 @@ bottom: -1rem!important;
 .curve {
   display: flex;
 }
-.coral-mobiles-link,
-.coral-emails {
+.coral-mobiles-link {
   margin-top: -4px;
+  display: flex;
+  margin-left: 5rem;
+}
+.coral-emails{
+  margin-top: -4px;
+  display: flex;
+  margin-left: 2rem;
 }
 .coral-mobiles-link a {
   display: inline-block;
-  padding: 10px 20px;
-  margin-left: 20px;
+  padding: 10px 0px;
+  /* margin-left: 34px; */
   text-decoration: none;
-  color: #fff;
-  font-size: 19px;
+  color: #fff!important;
+  font-size: 16px;
 }
 .coral-emails a {
   display: inline-block;
-  padding: 10px 20px;
-  margin-left: 43px;
+  padding: 11px 0px;
+  margin-left: 57px;
   text-decoration: none;
-  color: #fff;
+  color: #fff!important;
   font-size: 19px;
 }
 .mobilefour {

@@ -22,14 +22,14 @@ class Header extends Component {
                 <div class="collapse navbar-collapse" id="myNavId">
                   <ul class="nav navbar-nav coral-nav-res">
                     <li class="active">
-                      <a href="#">Home</a>
+                      <a href="/">Home</a>
                     </li>
-                    <li className="active">Project Details</li>
+                    <li className="active"><a href="/project-details">Project Details</a></li>
                     <li class="active">
-                      <a href="#">About us</a>
+                      <a href="/aboutus">About us</a>
                     </li>
                     <li class="active">
-                      <a href="#">Contact us</a>
+                      <a href="/contact">Contact us</a>
                     </li>
                   </ul>
                 </div>
@@ -64,37 +64,35 @@ class Header extends Component {
             <div class="row">
               <div class="col-6">
                 <a href="/">
-                <div class="coral-top-logo">
-                  <div class="c-logo">
-                    <img
-                      src={require("../../assets/img/coral/coral-logo.png")}
-                      width="100%"
-                      height="100%"
-                      class="img-fluid"
-                    />
+                  <div class="coral-top-logo">
+                    <div class="c-logo">
+                      <img
+                        src="https://coralcounty.catalystudio.in/wp-content/uploads/2020/07/Coral-County-logo-640-X-100.png"
+                        class="img-fluid"
+                        alt="logo"
+                      />
+                    </div>
                   </div>
-                  <div class="coral-title">
-                    <h1>
-                      <a href="/">Coral County</a>
-                    </h1>
-                  </div>
-                </div>
                 </a>
               </div>
               <div class="col-6 coral-nav">
                 <div class="coral-linksd">
                   <div class="curve">
                     <div class="coral-mobiles-link">
-                      <a href="#">
+                      {/* <a href="#"> */}
+                      <a href="tel:9842791955">
+                        {" "}
                         <i
                           class="fa fa-mobile mobilefour"
                           aria-hidden="true"
                         ></i>
-                        +91 9842791955 / +91 9791622236
-                      </a>
+                        +91 9842791955 /{" "}
+                      </a>{" "}
+                      <a href="tel:9791622236">+91 9791622236</a>
+                      {/* </a> */}
                     </div>
                     <div class="coral-emails">
-                      <a href="#">
+                      <a href="mailto: coralcounty@gmail.com">
                         <i
                           class="fa fa-envelope mobilefour"
                           aria-hidden="true"
@@ -107,7 +105,7 @@ class Header extends Component {
                 <div class="coral-menu">
                   <ul>
                     <li>
-                    <NavLink
+                      <NavLink
                         className="tags"
                         activeClassName="coral-active coral-list"
                         exact
@@ -126,7 +124,7 @@ class Header extends Component {
                       </NavLink>
                     </li>
                     <li>
-                    <NavLink
+                      <NavLink
                         className="tags"
                         activeClassName="coral-active coral-list"
                         to="/aboutus"
@@ -135,7 +133,7 @@ class Header extends Component {
                       </NavLink>
                     </li>
                     <li>
-                    <NavLink
+                      <NavLink
                         className="tags"
                         activeClassName="coral-active coral-list"
                         to="/contact"

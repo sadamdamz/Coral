@@ -4,7 +4,7 @@ class index extends Component {
   render() {
     return (
       <div className="pd-8">
-        <div className="pd-4">
+        <div className="pd-4 section-bg">
           <div>
             <div class="ms-heading text-center ms-inner-heading">
               <div style={{ paddingTop: "2rem" }}>
